@@ -15,7 +15,7 @@ void setup() {
   Serial.begin(9600);
 
   // Create the BLE Device
-  BLEDevice::init("ESP32 - Connection example");
+  BLEDevice::init("ESP32 - Connection example ");
 
   // Create the BLE Server
   BLEServer* pServer = BLEDevice::createServer();
