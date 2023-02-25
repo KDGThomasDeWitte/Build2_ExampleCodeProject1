@@ -17,11 +17,6 @@
 #define SOIL_CAP A2    // Soil digital sensor pin
 #define SOIL_ANALOG A1 // Soil analog sensor pin
 
-// Define required settings for Dabble app
-#define CUSTOM_SETTINGS
-#define INCLUDE_DATALOGGER_MODULE
-#define INCLUDE_DABBLEINPUTS_MODULE
-
 // Insert your network credentials
 #define WIFI_SSID "insert here"
 #define WIFI_PASSWORD "insert here"
@@ -97,11 +92,13 @@ void get_soilmoissture_check()
   Firebase.RTDB.setInt(&fbdo, "Soil/status", is_soil_dry);
 }
 
+// Function to set relay state based on soil moisture status
 void set_soil_relay()
 {
-  Firebase.RTDB.getInt(&fbdo, "Soil/status");
-  int turn_relay_on = fbdo.intData();
-  digitalWrite(RELAYPIN, turn_relay_on);
+// Get soil moisture status from Firebase Realtime Database
+Firebase.RTDB.getInt(&fbdo, "Soil/status");
+int turn_relay_on = fbdo.intData();
+digitalWrite(RELAYPIN, turn_relay_on);
 }
 
 void setup()
@@ -152,13 +149,13 @@ void setup()
 void loop()
 {
   set_soil_relay();
-  // Check if 2 seconds have elapsed since the last data transmission
+  // Check if 10 seconds have elapsed since the last data transmission
   if (startpoint + 10000 < millis())
   {
     startpoint = millis();
     millis_check = true;
   }
-  // If 2 seconds have elapsed
+  // If 10 seconds have elapsed
   if (millis_check)
   {
     millis_check = false;
