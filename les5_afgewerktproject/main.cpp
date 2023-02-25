@@ -23,14 +23,14 @@
 #define INCLUDE_DABBLEINPUTS_MODULE
 
 // Insert your network credentials
-#define WIFI_SSID "TenTgast"
-#define WIFI_PASSWORD "gratiswifi"
+#define WIFI_SSID "insert here"
+#define WIFI_PASSWORD "insert here"
 
 // Insert Firebase project API Key
-#define API_KEY "AIzaSyAPQfFNTIHgia1034CgmN-95TwVMMUxQHU"
+#define API_KEY "insert here"
 
 // Insert RTDB URLefine the RTDB URL */
-#define DATABASE_URL "https://waterfarm-f570b-default-rtdb.europe-west1.firebasedatabase.app/"
+#define DATABASE_URL "insert here"
 
 // Define Firebase Data object
 FirebaseData fbdo;
